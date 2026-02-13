@@ -1,0 +1,185 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": []
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "source": [
+        "# Día 9 — Modularización con funciones\n",
+        "\n",
+        "Hoy voy a reorganizar mi gestor de tareas\n",
+        "dividiendo el código en funciones.\n",
+        "\n",
+        "Objetivo:\n",
+        "- separar responsabilidades\n",
+        "- mejorar la estructura\n",
+        "- escribir código más profesional\n",
+        "\n",
+        "Día: 9/100"
+      ],
+      "metadata": {
+        "id": "ejPgJb98et-Y"
+      }
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 2,
+      "metadata": {
+        "id": "27rAZ73-bpd1"
+      },
+      "outputs": [],
+      "source": [
+        "def mostrar_menu():\n",
+        "  print(\"\\n Gestor de tareas\")\n",
+        "  print(\"1. Añadir tareas\")\n",
+        "  print(\"2. Mostrar tareas\")\n",
+        "  print(\"3. Salir\")"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "def añadir_tarea(tareas):\n",
+        "  titulo = input(\"Título de la tarea: \")\n",
+        "  estado = input(\"¿Está completada? (si/no): \").lower()\n",
+        "\n",
+        "  tarea = {\n",
+        "      \"titulo\": titulo,\n",
+        "      \"estado\": estado\n",
+        "  }\n",
+        "\n",
+        "  tareas.append(tarea)\n",
+        "  print(\"Tarea añadida correctamente\")"
+      ],
+      "metadata": {
+        "id": "gFyNPGn8fArf"
+      },
+      "execution_count": 3,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "def mostrar_tareas(tareas):\n",
+        "  if len(tareas) == 0:\n",
+        "    print(\"No hay tareas\")\n",
+        "  else:\n",
+        "    print(\"\\nLista de tareas:\")\n",
+        "    for i, tarea in enumerate(tareas, start=1):\n",
+        "      print(i, \"-\", tarea[\"titulo\"], \"| Estado:\", tarea[\"estado\"])"
+      ],
+      "metadata": {
+        "id": "OrjPzNQ7hrQE"
+      },
+      "execution_count": 4,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "tareas = []\n",
+        "\n",
+        "opcion = \"\"\n",
+        "\n",
+        "while opcion != \"3\":\n",
+        "  mostrar_menu()\n",
+        "  opcion = input(\"Elige una opción: \")\n",
+        "\n",
+        "  if opcion == \"1\":\n",
+        "    añadir_tarea(tareas)\n",
+        "  elif opcion == \"2\":\n",
+        "    mostrar_tareas(tareas)\n",
+        "  elif opcion == \"3\":\n",
+        "    print(\"¡Hasta luego!\")\n",
+        "  else:\n",
+        "    print(\"Opción no válida\")"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "aovbmCqKiMdi",
+        "outputId": "b196049c-72d6-43e5-bfa5-5ddec24a2841"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "\n",
+            " Gestor de tareas\n",
+            "1. Añadir tareas\n",
+            "2. Mostrar tareas\n",
+            "3. Salir\n",
+            "Elige una opción: Añadir tareas\n",
+            "Opción no válida\n",
+            "\n",
+            " Gestor de tareas\n",
+            "1. Añadir tareas\n",
+            "2. Mostrar tareas\n",
+            "3. Salir\n",
+            "Elige una opción: Mostrar tareas\n",
+            "Opción no válida\n",
+            "\n",
+            " Gestor de tareas\n",
+            "1. Añadir tareas\n",
+            "2. Mostrar tareas\n",
+            "3. Salir\n",
+            "Elige una opción: salir\n",
+            "Opción no válida\n",
+            "\n",
+            " Gestor de tareas\n",
+            "1. Añadir tareas\n",
+            "2. Mostrar tareas\n",
+            "3. Salir\n",
+            "Elige una opción: fuera\n",
+            "Opción no válida\n",
+            "\n",
+            " Gestor de tareas\n",
+            "1. Añadir tareas\n",
+            "2. Mostrar tareas\n",
+            "3. Salir\n",
+            "Elige una opción: Salir\n",
+            "Opción no válida\n",
+            "\n",
+            " Gestor de tareas\n",
+            "1. Añadir tareas\n",
+            "2. Mostrar tareas\n",
+            "3. Salir\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [],
+      "metadata": {
+        "id": "upxlzgW2ik7w"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [],
+      "metadata": {
+        "id": "nWoe1fSujSlD"
+      },
+      "execution_count": null,
+      "outputs": []
+    }
+  ]
+}
